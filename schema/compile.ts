@@ -1,4 +1,4 @@
-const fs = require('fs');
+import * as fs from 'fs'
 import { resolve } from 'path';
 
 import * as TJS from 'typescript-json-schema';
@@ -15,6 +15,6 @@ const program = TJS.getProgramFromFiles([resolve("./schema.ts")], compilerOption
 
 const schema = TJS.generateSchema(program, "RootType", settings);
 
-fs.writeFile("schema.json", JSON.stringify(schema), (err) => {
+fs.writeFile("../schema.json", JSON.stringify(schema, null, 4), (err) => {
     if (err) console.log("There was an error creating the file.");
 });
