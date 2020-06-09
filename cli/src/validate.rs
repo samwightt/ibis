@@ -1,3 +1,4 @@
+use clap::{App, Arg, ArgMatches};
 use colored::*;
 use reqwest;
 use serde_json::{from_reader, Value};
@@ -5,9 +6,9 @@ use std::fs::File;
 use std::io::Write;
 use std::path::Path;
 use valico::json_schema;
-use clap::{ArgMatches, App, Arg};
 
-async fn validate_schema(file: &String) {
+/// Gets the schema.json from the local directory, converting it to a
+async fn get_schema() -> Value {
     if !Path::new("./schema.json").exists() {
         println!("{}", "schema.json not found, downloading...".blue());
         let result = reqwest::get("https://raw.githubusercontent.com/samwightt/docubus/master/schema.json").await
@@ -19,16 +20,20 @@ async fn validate_schema(file: &String) {
         println!("{}", "Downloaded schema.json successfully!\n".green());
     }
 
-    let json_v4_schema: Value =
-        from_reader(File::open("./schema.json").expect("Couldn't open schema."))
-            .expect("Couldn't serialize JSON.");
+    return from_reader(File::open("./schema.json").expect("Couldn't open schema."))
+        .expect("Couldn't serialize JSON.");
+}
+
+async fn validate_schema(file: &String) {
+    let schema_json = get_schema().await;
+    let mut scope: json_schema::Scope = json_schema::Scope::new();
+
+    let schema = scope
+        .compile_and_return(schema_json.clone(), false)
+        .expect("Error doing some stuff.");
+
     let to_validate: Value = from_reader(File::open(&file).expect("Couldn't open file."))
         .expect("Couldn't serialize JSON.");
-
-    let mut scope = json_schema::Scope::new();
-    let schema = scope
-        .compile_and_return(json_v4_schema.clone(), false)
-        .unwrap();
 
     let validate = schema.validate(&to_validate);
     if !validate.is_valid() {
@@ -52,7 +57,11 @@ pub fn subcommand() -> App<'static> {
     let result = App::new("validate")
         .about("Validates a docubus.json file.")
         .version("0.1.0")
-        .arg(Arg::with_name("file").index(1).about("The path to the docubus.json file to verify (default ./docubus.json)."));
+        .arg(
+            Arg::with_name("file")
+                .index(1)
+                .about("The path to the docubus.json file to verify (default ./docubus.json)."),
+        );
     return result;
 }
 

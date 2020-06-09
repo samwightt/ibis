@@ -1,7 +1,7 @@
 mod validate;
 
+use clap::App;
 use futures::join;
-use clap::{App, Arg};
 
 #[tokio::main]
 async fn main() -> () {
