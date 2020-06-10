@@ -2,53 +2,70 @@
     "type": "object",
     "properties": {
         "name": {
+            "description": "The name of the package. May contain only alphabetic characters, slashes, dashes, and underscores.",
             "type": "string"
         },
         "version": {
+            "description": "The version of the package. NOTE: Version numbers are immutable. Docubus expects that once a package changes,\nthe version number changes as well. This means that you cannot hot-fix content and *must* release a new version\nof the package when you want to update content.",
             "type": "string"
         },
         "description": {
+            "description": "A description for the package. Will be shown in search results and package management views.",
             "type": "string"
         },
         "author": {
+            "description": "The author of the package.",
             "type": "string"
         },
         "language": {
+            "description": "The ISO 639-1 standard language code of the package.",
             "type": "string"
         },
         "pages": {
+            "description": "The page table of the package.",
+            "$ref": "#/definitions/PageTable"
+        },
+        "sidebar": {
+            "description": "The sidebar table of the package.",
             "type": "array",
             "items": {
-                "$ref": "#/definitions/PageType"
+                "type": "string"
             }
         }
     },
     "required": [
         "name",
-        "pages",
         "version"
     ],
     "definitions": {
+        "PageTable": {
+            "description": "The page table contains all pages in the package.\nEach key (string) mut be the ID of the package, and the value must be the PageType.",
+            "type": "object",
+            "additionalProperties": {
+                "$ref": "#/definitions/PageType"
+            }
+        },
         "PageType": {
             "type": "object",
             "properties": {
                 "title": {
+                    "description": "The title of the page. May only contain alphanumeric characters, dashes, and underscores, and spaces.",
                     "type": "string"
                 },
                 "description": {
+                    "description": "A short description of the page. May be used in search results.",
                     "type": "string"
                 },
                 "path": {
+                    "description": "A path to the HTML page from the docubus.json file.",
                     "type": "string"
                 },
                 "entryType": {
-                    "$ref": "#/definitions/EntryTypes"
-                },
-                "id": {
-                    "type": "string"
+                    "$ref": "#/definitions/EntryTypes",
+                    "description": "The type of entry the page is."
                 },
                 "children": {
-                    "description": "The children of a page, a list of IDs in the same JSON structure.\nEach ID must exist in the array of pages, otherwise the Docubus document is invalid.",
+                    "description": "An optional array of children IDs.",
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -57,7 +74,6 @@
             },
             "required": [
                 "entryType",
-                "id",
                 "path",
                 "title"
             ]
