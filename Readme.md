@@ -1,14 +1,14 @@
-# Docubus
+# Ibis
 
-A documentation package manager, viewer, and search engine. Use Docubus to download documentation packages for offline use, view them in any web browser, and search through them using lightning fast search.
+A documentation package manager, viewer, and search engine. Use Ibis to download documentation packages for offline use, view them in any web browser, and search through them using lightning fast search.
 
-You can download any documentation package that has a `docubus.json` file in it. `docubus.json` files allow nested documentation structures to be laid out independently of their file system layouts. They are optimized for quick, no-transform-needed serving from web servers. They are strictly validated against a JSON schema, found in the `schema.json` file in this repo.
+You can download any documentation package that has a `ibis.json` file in it. `ibis.json` files allow nested documentation structures to be laid out independently of their file system layouts. They are optimized for quick, no-transform-needed serving from web servers. They are strictly validated against a JSON schema, found in the `schema.json` file in this repo.
 
-Docubus is written in Rust. The JSON Schema is generated using Typescript. It is currently in a pre-alpha stage and has a large part of the needed features unimplemented.
+Ibis is written in Rust. The JSON Schema is generated using Typescript. It is currently in a pre-alpha stage and has a large part of the needed features unimplemented.
 
 ## Feature list
 
-- [x] Verify `docubus.json` files.
+- [x] Verify `ibis.json` files.
 - [ ] Standard format for documentation packages.
   - [x] Support for pages.
   - [ ] Support for multiple versions.
@@ -29,25 +29,25 @@ Docubus is written in Rust. The JSON Schema is generated using Typescript. It is
 
 ## To Use
 
-Because Docubus is pre-alpha software, there are no pre-built binaries of it available for download. In order to build Docubus locally, you'll need to install the latest version of [RustUp](https://rustup.rs/) in order to get things working. 
+Because Ibis is pre-alpha software, there are no pre-built binaries of it available for download. In order to build Ibis locally, you'll need to install the latest version of [RustUp](https://rustup.rs/) in order to get things working. 
 
 Once you have RustUp installed, run the following commands to build and run the CLI:
 
 ```
-git clone https://github.com/samwightt/docubus/
-cd docubus/cli
+git clone https://github.com/samwightt/ibis/
+cd ibis/cli
 cargo run
 ```
 
-You should see Docubus' help panel be outputted to the terminal.
+You should see Ibis' help panel be outputted to the terminal.
 
 ## To Develop
 
-Downloading and building Docubus for development is nearly identical to running it just for use:
+Downloading and building Ibis for development is nearly identical to running it just for use:
 
 ```
-git clone https://github.com/samwightt/docubus/
-cd docubus/cli
+git clone https://github.com/samwightt/ibis/
+cd ibis/cli
 cargo run
 ```
 
@@ -56,7 +56,7 @@ cargo run
 To edit the `schema.json` file, you'll need the latest version of [NodeJS](https://nodejs.org/en/) installed. Once you have Node and NPM installed, run the following commands (assuming you have the directory cloned).
 
 ```
-cd docubus/schema
+cd ibis/schema
 npm install --save
 npx ts-node compile.ts
 ```

@@ -159,6 +159,21 @@ dependencies = [
 ]
 
 [[package]]
+name = "cli"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "base",
+ "clap",
+ "colored",
+ "futures",
+ "reqwest",
+ "serde_json",
+ "tokio",
+ "valico",
+]
+
+[[package]]
 name = "cloudabi"
 version = "0.0.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -230,21 +245,6 @@ dependencies = [
  "libc",
  "redox_users",
  "winapi 0.3.8",
-]
-
-[[package]]
-name = "docubus"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "base",
- "clap",
- "colored",
- "futures",
- "reqwest",
- "serde_json",
- "tokio",
- "valico",
 ]
 
 [[package]]

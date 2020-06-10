@@ -1,5 +1,5 @@
 [package]
-name = "docubus"
+name = "cli"
 version = "0.1.0"
 authors = ["sam"]
 edition = "2018"

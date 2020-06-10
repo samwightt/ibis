@@ -48,7 +48,7 @@ impl Schema {
         println!("Could not find schema.json in cache folder, downloading now...");
         let schema_path = &self.path;
         if !schema_path.exists() {
-            let result = reqwest::get("https://raw.githubusercontent.com/samwightt/docubus/master/schema.min.json").await
+            let result = reqwest::get("https://raw.githubusercontent.com/samwightt/ibis/master/schema.min.json").await
                 .context("Could not get schema.min.json from GitHub source.")?
                 .text().await
                 .context("Could not get schema.min.json from GitHub source.")?;

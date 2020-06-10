@@ -5,7 +5,7 @@ use schema::Schema;
 use std::path::PathBuf;
 
 /// Represents the root store instance. The store (as of right now) is located at
-/// home_dir/.docubus. Documentation packages, schema files, index files, etc. are
+/// home_dir/.ibis. Documentation packages, schema files, index files, etc. are
 /// all stored at this directory.
 pub struct Store {
     schema: Schema,
@@ -13,11 +13,11 @@ pub struct Store {
 }
 
 impl Store {
-    /// Utility function for getting the cache path (place where everything in Docubus is stored).
+    /// Utility function for getting the cache path (place where everything in Ibis is stored).
     /// Fails if the operating system or user doesn't have a home directory set.
     pub fn get_cache_path() -> Result<PathBuf> {
         let mut root = dirs::home_dir().context("Unable to get home directory.")?;
-        root.push(".docubus");
+        root.push(".ibis");
         Ok(root)
     }
 
@@ -39,7 +39,7 @@ impl Store {
         let cache_path = Store::get_cache_path()?;
         if !cache_path.exists() {
             std::fs::create_dir(&cache_path).context("Could not create cache directory.")?;
-            println!(".docubus cache directory not found. Created .docubus directory.");
+            println!(".ibis cache directory not found. Created .ibis directory.");
         }
 
         let mut schema_path = PathBuf::from(&cache_path);

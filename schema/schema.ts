@@ -79,7 +79,7 @@ type EntryTypes =
 
 /**
  * The children of a page, a list of IDs in the same JSON structure.
- * Each ID must exist in the array of pages, otherwise the Docubus document is invalid.
+ * Each ID must exist in the array of pages, otherwise the Ibis document is invalid.
  */
 type ChildrenIDArray = string[];
 
@@ -93,7 +93,7 @@ interface PageType {
    */
   description?: string;
   /**
-   * A path to the HTML page from the docubus.json file.
+   * A path to the HTML page from the ibis.json file.
    */
   path: string;
   /**
@@ -127,7 +127,7 @@ interface RootType {
    */
   name: string;
   /**
-   * The version of the package. NOTE: Version numbers are immutable. Docubus expects that once a package changes,
+   * The version of the package. NOTE: Version numbers are immutable. Ibis expects that once a package changes,
    * the version number changes as well. This means that you cannot hot-fix content and *must* release a new version
    * of the package when you want to update content.
    */
