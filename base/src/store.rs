@@ -1,15 +1,15 @@
 pub mod schema;
 
-use anyhow::{Result, Context};
-use std::path::PathBuf;
+use anyhow::{Context, Result};
 use schema::Schema;
+use std::path::PathBuf;
 
 /// Represents the root store instance. The store (as of right now) is located at
 /// home_dir/.docubus. Documentation packages, schema files, index files, etc. are
 /// all stored at this directory.
 pub struct Store {
     schema: Schema,
-    cache_path: PathBuf
+    cache_path: PathBuf,
 }
 
 impl Store {
@@ -43,11 +43,11 @@ impl Store {
         }
 
         let mut schema_path = PathBuf::from(&cache_path);
-        schema_path.push("schema.json");
+        schema_path.push("schema.min.json");
 
         Ok(Store {
             schema: Schema::new(schema_path),
-            cache_path
+            cache_path,
         })
     }
 }

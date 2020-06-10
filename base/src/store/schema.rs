@@ -36,7 +36,7 @@ impl Schema {
         }
         else {
             let path = &self.path;
-            let schema: Value = from_reader(File::open(path).context("Failed to read schema.json,")?).context("Failed to parse schema.json.")?;
+            let schema: Value = from_reader(File::open(path).context("Failed to read schema.min.json,")?).context("Failed to parse schema.min.json.")?;
             self.val = Some(schema.clone());
             Ok(schema)
         }
@@ -48,17 +48,17 @@ impl Schema {
         println!("Could not find schema.json in cache folder, downloading now...");
         let schema_path = &self.path;
         if !schema_path.exists() {
-            let result = reqwest::get("https://raw.githubusercontent.com/samwightt/docubus/master/schema.json").await
-                .context("Could not get schema.json from GitHub source.")?
+            let result = reqwest::get("https://raw.githubusercontent.com/samwightt/docubus/master/schema.min.json").await
+                .context("Could not get schema.min.json from GitHub source.")?
                 .text().await
-                .context("Could not get schema.json from GitHub source.")?;
+                .context("Could not get schema.min.json from GitHub source.")?;
             let mut out = File::create(&schema_path)?;
-            out.write_all(&result.as_bytes()).context("Failed to write downloaded schema.json.")?;
+            out.write_all(&result.as_bytes()).context("Failed to write downloaded schema.min.json.")?;
         }
         else {
-            return Err(anyhow!("Tried to download docubus.json but it already existed."));
+            return Err(anyhow!("Tried to download schema.min.json but it already existed."));
         }
-        println!("Downloaded schema.json to cache folder.");
+        println!("Downloaded schema.min.json to cache folder.");
 
         Ok(())
     }
