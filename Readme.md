@@ -1,3 +1,7 @@
+<p align="center">
+  <img width="200" height="200" src="/static/icon.png">
+</p>
+
 # Ibis
 
 A documentation package manager, viewer, and search engine. Use Ibis to download documentation packages for offline use, view them in any web browser, and search through them using lightning fast search.
