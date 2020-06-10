@@ -83,33 +83,20 @@ type EntryTypes
  */
 type ChildrenIDArray = string[]
 
-interface FileTypeLocal {
-    remote: false
-    path: string
-}
-
-interface FileTypeRemote {
-    remote: true
-    url: string
-}
-
 interface PageType {
     title: string
     description?: string
-    contents: FileTypeLocal | FileTypeRemote
+    path: string
     entryType: EntryTypes
     id: string
     children?: ChildrenIDArray
 }
 
-interface InformationType {
-    name: string
-    description?: string
-    icon: FileTypeRemote | FileTypeLocal
-    language?: string
-}
-
 interface RootType {
-    info: InformationType
+    name: string
+    version: string
+    description?: string
+    author?: string
+    language?: string
     pages: PageType[]
 }

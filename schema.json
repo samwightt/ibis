@@ -1,8 +1,20 @@
 {
     "type": "object",
     "properties": {
-        "info": {
-            "$ref": "#/definitions/InformationType"
+        "name": {
+            "type": "string"
+        },
+        "version": {
+            "type": "string"
+        },
+        "description": {
+            "type": "string"
+        },
+        "author": {
+            "type": "string"
+        },
+        "language": {
+            "type": "string"
         },
         "pages": {
             "type": "array",
@@ -12,74 +24,11 @@
         }
     },
     "required": [
-        "info",
-        "pages"
+        "name",
+        "pages",
+        "version"
     ],
     "definitions": {
-        "InformationType": {
-            "type": "object",
-            "properties": {
-                "name": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "icon": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/definitions/FileTypeLocal"
-                        },
-                        {
-                            "$ref": "#/definitions/FileTypeRemote"
-                        }
-                    ]
-                },
-                "language": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "icon",
-                "name"
-            ]
-        },
-        "FileTypeLocal": {
-            "type": "object",
-            "properties": {
-                "remote": {
-                    "type": "boolean",
-                    "enum": [
-                        false
-                    ]
-                },
-                "path": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "path",
-                "remote"
-            ]
-        },
-        "FileTypeRemote": {
-            "type": "object",
-            "properties": {
-                "remote": {
-                    "type": "boolean",
-                    "enum": [
-                        true
-                    ]
-                },
-                "url": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "remote",
-                "url"
-            ]
-        },
         "PageType": {
             "type": "object",
             "properties": {
@@ -89,15 +38,8 @@
                 "description": {
                     "type": "string"
                 },
-                "contents": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/definitions/FileTypeLocal"
-                        },
-                        {
-                            "$ref": "#/definitions/FileTypeRemote"
-                        }
-                    ]
+                "path": {
+                    "type": "string"
                 },
                 "entryType": {
                     "$ref": "#/definitions/EntryTypes"
@@ -114,9 +56,9 @@
                 }
             },
             "required": [
-                "contents",
                 "entryType",
                 "id",
+                "path",
                 "title"
             ]
         },
