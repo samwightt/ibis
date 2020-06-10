@@ -6,6 +6,27 @@ You can download any documentation package that has a `docubus.json` file in it.
 
 Docubus is written in Rust. The JSON Schema is generated using Typescript. It is currently in a pre-alpha stage and has a large part of the needed features unimplemented.
 
+## Feature list
+
+- [x] Verify `docubus.json` files.
+- [ ] Standard format for documentation packages.
+  - [x] Support for pages.
+  - [ ] Support for multiple versions.
+  - [ ] Support for specifying programming language.
+  - [ ] Support for multiple languages in each package.
+- [ ] Install and manage documentation packages
+  - [ ] Download and manage documentation packages.
+  - [ ] Remove and re-install documentation packages.
+  - [ ] Install specific versions of documentation packages.
+  - [ ] List all documentation packages installed.
+- [ ] View downloaded packages in a web browser.
+- [ ] Search through all content in downloaded packages via the CLI.
+- [ ] Search through all content in downloaded packages via the web interface.
+- [ ] Quickly switch between documentation packages using keyboard shortcuts.
+- [ ] Search all documentation packages on the repo.
+- [ ] Format for a repository of all documentation packages for NPM-like install behavior.
+- [ ] Default language support.
+
 ## To Use
 
 Because Docubus is pre-alpha software, there are no pre-built binaries of it available for download. In order to build Docubus locally, you'll need to install the latest version of [RustUp](https://rustup.rs/) in order to get things working. 
