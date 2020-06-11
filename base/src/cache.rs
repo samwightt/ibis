@@ -36,12 +36,6 @@ pub async fn get_cache_path() -> Result<PathBuf> {
 
 /// Gets a given path starting from the cache root. Fails if the operating system or user
 /// doesn't have a home directory set.
-/// 
-/// # Examples
-/// ```
-/// let path = "testing";
-/// let local_path = get_path(&testing); // ~/.ibis/testing
-/// ```
 pub async fn get_path(p: &str) -> Result<PathBuf> {
     let mut path = get_cache_path().await.context("Could not get cache path.")?;
     path.push(&p);
