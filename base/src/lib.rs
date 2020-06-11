@@ -1,3 +1,3 @@
-mod store;
-pub use store::Store;
-pub use store::schema::Schema;
+mod schema;
+pub mod cache;
+pub use schema::Schema;

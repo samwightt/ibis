@@ -2,7 +2,6 @@ mod validate;
 
 use clap::{App, AppSettings};
 use futures::join;
-use base::Store;
 
 /// Creates and runs the main CLI app.
 #[tokio::main]
@@ -15,10 +14,6 @@ async fn main() -> () {
         .setting(AppSettings::ArgRequiredElseHelp)
         .get_matches();
 
-    // Create the root store.
-    let mut store = Store::new()
-        .expect("Error: Could not create .ibis directory. Please make sure you have permissions to do so.");
-
-    let validate_fut = validate::run(&app, &mut store);
+    let validate_fut = validate::run(&app);
     join!(validate_fut);
 }

@@ -1,10 +1,11 @@
 use clap::{App, Arg, ArgMatches};
 use colored::Colorize;
-use base::{Store, Schema};
+use base::Schema;
 use anyhow::{Result, Context};
 
 /// Validates a file against the schema.
-async fn validate_schema(file: &str, schema: &mut Schema) -> Result<()> {
+async fn validate_schema(file: &str) -> Result<()> {
+    let mut schema = Schema::new().await?;
     let is_valid = schema
         .validate_file(&file)
         .await
@@ -40,11 +41,11 @@ pub fn subcommand<'a>() -> App<'a> {
         )
 }
 
-pub async fn run(app: &ArgMatches, store: &mut Store) {
+pub async fn run(app: &ArgMatches) {
     if let Some(ref verify_command) = app.subcommand_matches("validate") {
         let file = verify_command.value_of("file").unwrap_or("ibis.json");
         let line_to_print = format!("Validating the config of {}...", file);
         println!("{}", line_to_print.blue().bold());
-        validate_schema(&file, store.schema()).await.unwrap_or_else(|err| panic!("{}{}", "Error while validating: ".red(), err));
+        validate_schema(&file).await.unwrap_or_else(|err| println!("{}{:?}", "Error while validating: ".red().bold(), err));
     }
 }
