@@ -58,6 +58,7 @@ dependencies = [
  "dirs",
  "reqwest",
  "serde_json",
+ "tempfile",
  "tokio",
  "valico",
 ]

@@ -18,7 +18,7 @@ impl Store {
     pub fn get_cache_path() -> Result<PathBuf> {
         let mut root = dirs::home_dir().context("Unable to get home directory.")?;
         root.push(".ibis");
-        Ok(root)
+        return Ok(root);
     }
 
     /// Returns the schema as a mutable reference. Needed for most operations on the schema.
@@ -49,5 +49,17 @@ impl Store {
             schema: Schema::new(schema_path),
             cache_path,
         })
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn cache_path_no_env() {
+        let mut to_compare = dirs::home_dir().expect("Test failed.");
+        to_compare.push(".ibis");
+        assert_eq!(to_compare, Store::get_cache_path().expect("Test failed."));
     }
 }
