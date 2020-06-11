@@ -12,7 +12,7 @@ sudo: required
 env:
   global:
     # TODO Update this to match the name of your project.
-    - CRATE_NAME=trust
+    - CRATE_NAME=ibis
 
 matrix:
   # TODO These are all the build jobs. Adjust as necessary. Comment out what you
@@ -105,7 +105,7 @@ deploy:
   # - Encrypt it: `travis encrypt 0123456789012345678901234567890123456789
   # - Paste the output down here
   api_key:
-    secure: A9v3PIzQQ4U08OHFmDPQzNXbNHEb7YHyLXCvMF+dXFuNSvhUNlmQYykxqUf3dvikhJL2/bsZ14umm7ni7fQh0tGwJ4+lPpNzYAcweGgNXnWvjTpY6ovuRbr3gs4/srkyxp/GBDmSW5L8wFN3hKCB+Lm0YnIPB9IA2afP8a30+8VTXT9nv7pNqGny4ilN41ycr4DZi3sQoXdbruy7ClN7gsWW/GUiudBccHVIjmTapOFKLwZHODaUl/1/RDWQzh+i+17e1ivXuJPktDSrqmHPTZ15OjklnHKd6t179ry6VkGRg4R/R/YukVIqGzeaXGWAwdAQ5gE8cjGZghJLVi2jkDBJ85z8MvT+zLZLyliiuhLc/X8y7mkE1n0FKFtXXzFVt0l7V1LaEKbIbiV6XX3jsir4qgkqWjPHBZqO5mkGNFS16Dmt30/ZtEPAzXiINFXbWuWrpQ/LZ4NSto8IMrRTcoyDbAga/KYxJiNIeVuCe1E9dbytDM7K0GLtxJTul/WnnSeI6r//EFyC4bxYjyHhCXaag4q14KM+ak4rB0QgxsYzyGuh2MqyCoVj8YJLjLdKnL/SV7W7LPD40xlxvI6VCYTVi2ILHwL6vCxpukXYteX0c5IAIWkISDKu6nNBEgmCHXXPSqYSrgE5g7/QoCQHI8++nR8iKe0s7TWxZRydby8=
+    secure: vUXVumHKliMdINeJVVHZWPHoIONrn+kG8Jnwm1xFLQHEtIt943EA4dSOJTZRY8RtDsP8EN8962g42kC7OmXWFXTey83Ib+4+8giKZhG3aBdlHoBx78Xm8h6lvlNkp6Y6NOv31c33FD6VmY7JiYtL5XDZxbmsvOuJRSCeCQIiJIi3dT8QZzWCrpzh/QoBMBInIBt0J0ASdhWLaMW1+PEBIJFEP0oSev0Ch2KvQFliEPOjZ5UHr9Bgmfqs5iffzQ9wlpxRI0OPWNgSf5VP/S2LPQH8Lb86L/EL3se/kdqU6OvXGi8+pZ2oN9dbOh4t41W5Z/Sm7tWZy2RN4hxL1l6ut/+bcpMWqFF4DgEu034sIhMDtAxb1XN8WOqe57glOH9lFsTnYFreN8EoA04TYtvCn63I/DJXZC3SgtrzBA0N273FllcNop681JQx7n4QyxWBzFiVDEqSuKLK6YKTpaGI3nWlPO1rleXg9ABbuV4uHfyjuz46S8aPLqryKYHtzH1ECCbcYO9830OgOpu/YLqW3lAlNwhDuJH8pRvi5TXpDrnA0dTTEuBO+iyvkWDx43rEW+URAL7o0LL1hXyEV5KyFx+4qiEuxudpG6rlZA9ypyVivE/ITtWTLWm8T79kOvcX4ltmaGwre0cT3Y7jO7A3gEJ5hdBtjNg2R4eHzSRgB3M=
   file_glob: true
   file: $CRATE_NAME-$TRAVIS_TAG-$TARGET.*
   on:
