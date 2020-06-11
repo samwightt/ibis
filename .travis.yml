@@ -85,8 +85,8 @@ matrix:
 
 before_install:
   - set -e
-  - rustup self update
   - if ["$TRAVIS_OS_NAME" = "linux"]; then apt install libssl-dev; fi
+  - rustup self update
 
 install:
   - sh ci/install.sh
