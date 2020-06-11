@@ -85,7 +85,7 @@ matrix:
 
 before_install:
   - set -e
-  - apt install libssl-dev
+  - sudo apt-get install libssl-dev
   - rustup self update
 
 install:
