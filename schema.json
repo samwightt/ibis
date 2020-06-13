@@ -6,7 +6,7 @@
             "type": "string"
         },
         "version": {
-            "description": "The version of the package. NOTE: Version numbers are immutable. Docubus expects that once a package changes,\nthe version number changes as well. This means that you cannot hot-fix content and *must* release a new version\nof the package when you want to update content.",
+            "description": "The version of the package. NOTE: Version numbers are immutable. Ibis expects that once a package changes,\nthe version number changes as well. This means that you cannot hot-fix content and *must* release a new version\nof the package when you want to update content.",
             "type": "string"
         },
         "description": {
@@ -57,7 +57,7 @@
                     "type": "string"
                 },
                 "path": {
-                    "description": "A path to the HTML page from the docubus.json file.",
+                    "description": "A path to the HTML page from the ibis.json file.",
                     "type": "string"
                 },
                 "entryType": {

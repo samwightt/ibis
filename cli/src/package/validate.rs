@@ -1,13 +1,12 @@
 use clap::{App, Arg, ArgMatches};
 use colored::Colorize;
-use base::Schema;
+use base::validators::{PackageSchema, Validator};
 use anyhow::{Result, Context};
 
 /// Validates a file against the schema.
 async fn validate_schema(file: &str) -> Result<()> {
-    let mut schema = Schema::new().await?;
-    let is_valid = schema
-        .validate_file(&file)
+    let ps = PackageSchema {};
+    let is_valid = ps.validate_file(&file)
         .await
         .context("Could not validate file against schema.")?;
     

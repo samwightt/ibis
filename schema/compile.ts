@@ -27,3 +27,20 @@ fs.writeFile("../schema.min.json", JSON.stringify(schema), (err) => {
   if (err) console.log("There was an error generating the minified file.");
   console.log("Generated minified schema!");
 });
+
+const otherProgram = TJS.getProgramFromFiles(
+  [resolve("./repo.ts")],
+  compilerOptions
+);
+
+const repo = TJS.generateSchema(otherProgram, "RootType", settings);
+
+fs.writeFile("../repo.json", JSON.stringify(repo, null, 4), (err) => {
+  if (err) console.log("There was an error creating the file.");
+  console.log("Generated schema!");
+});
+
+fs.writeFile("../repo.min.json", JSON.stringify(repo), (err) => {
+  if (err) console.log("There was an error generating the minified file.");
+  console.log("Generated minified schema!");
+});

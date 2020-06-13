@@ -1,0 +1,42 @@
+{
+    "type": "array",
+    "items": {
+        "$ref": "#/definitions/PackageInterface"
+    },
+    "definitions": {
+        "PackageInterface": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "versions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/VersionInterface"
+                    }
+                }
+            },
+            "required": [
+                "name",
+                "versions"
+            ]
+        },
+        "VersionInterface": {
+            "type": "object",
+            "properties": {
+                "version": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "url",
+                "version"
+            ]
+        }
+    },
+    "$schema": "http://json-schema.org/draft-07/schema#"
+}

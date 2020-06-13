@@ -14,12 +14,13 @@
 use std::path::PathBuf;
 use anyhow::{Context, Result};
 use tokio::{fs::File, fs};
+use crate::constants::CACHE_PATH;
 
 /// Utility function for getting the cache path (place where everything in Ibis is stored).
 /// Fails if the operating system or user doesn't have a home directory set.
 async fn cache_path() -> Result<PathBuf> {
     let mut root = dirs::home_dir().context("Unable to get home directory.")?;
-    root.push(".ibis");
+    root.push(CACHE_PATH);
     Ok(root)
 }
 
