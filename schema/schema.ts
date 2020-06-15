@@ -97,6 +97,10 @@ interface PageType {
    */
   path: string;
   /**
+   * A unique id for the page.
+   */
+  id: string
+  /**
    * The type of entry the page is.
    */
   entryType: EntryTypes;

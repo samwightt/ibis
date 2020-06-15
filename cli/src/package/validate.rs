@@ -9,22 +9,9 @@ async fn validate_schema(file: &str) -> Result<()> {
     let is_valid = ps.validate_file(&file)
         .await
         .context("Could not validate file against schema.")?;
-    
-    if let Some(errors) = is_valid {
-        println!("{}", "Validation failed with errors:".red().bold());
-        for error in errors {
-            let err_body = &*error.get_title();
-            let err_path = &*error.get_path();
-            let error_complete = format!("  - {}: {}", err_body.yellow(), err_path);
 
-            println!("{}", error_complete);
+    println!("{}", "Schema validated with no errors!".green().bold());
 
-            if let Some(e) = error.get_detail() { println!("{}", e) }
-        }
-    }
-    else {
-        println!("{}", "Schema validated with no errors!".green().bold());
-    }
     Ok(())
 }
 
