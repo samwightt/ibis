@@ -6,7 +6,7 @@ use anyhow::{Result, Context};
 /// Validates a file against the schema.
 async fn validate_schema(file: &str) -> Result<()> {
     let ps = PackageSchema {};
-    let is_valid = ps.validate_file(&file)
+    ps.validate_file(&file)
         .await
         .context("Could not validate file against schema.")?;
 

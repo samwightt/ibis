@@ -1,6 +1,5 @@
 use serde_json::{from_str, Value};
 use valico::json_schema;
-use valico::common::error::ValicoErrors;
 use crate::cache;
 use anyhow::{Result, Context, anyhow};
 use tokio::prelude::*;
@@ -97,7 +96,7 @@ pub trait Validator {
     /// Calls `load_or_download()` to get the schema.
     /// *Beware the gnarly Valico errors!*
     async fn validate_file(&self, file: &str) -> Result<()> {
-        let mut file = File::open(&file).await.context("Could not open file to verify.")?;
+        let mut file = File::open(&file).await.context("Could not open file to verify: ")?;
         let mut buffer = String::new();
         file.read_to_string(&mut buffer).await?;
         let to_validate: Value = from_str(&buffer).context("Could not open file to parse.")?;
