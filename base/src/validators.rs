@@ -19,18 +19,22 @@ impl Validator for PackageSchema {
   }
   
   async fn after_validate(&self, val: &Value) -> Result<()> {
-    let pages = val.get("pages").ok_or(anyhow!("Could not get pages."))?;
-    let mut page_ids: HashSet<String> = HashSet::new();
+    // I don't know what I was thinking when I wrote this... This doesn't take into account no children or
+    // the fact that there are multiple pages in a json file???? Seriously don't know what was in my head.
+    // TODO: Fix child validation. There are more pressing issues now though.
 
-    for (_, val) in pages.as_object().ok_or(anyhow!("Could not get keys in pages."))? {
-      page_ids.insert(val.to_string());
-    }
+    // let pages = val.get("pages").ok_or(anyhow!("Could not get pages."))?;
+    // let mut page_ids: HashSet<String> = HashSet::new();
 
-    let children = pages.get("children").ok_or(anyhow!("Could not get children."))?.as_array().unwrap();
+    // for (_, val) in pages.as_object().ok_or(anyhow!("Could not get keys in pages."))? {
+    //   page_ids.insert(val.to_string());
+    // }
 
-    for child in children {
-      if !page_ids.contains(&child.to_string()) { return Err(anyhow!("Error finding child.")) }
-    }
+    // let children = pages.get("children").ok_or(anyhow!("Could not get children."))?.as_array().unwrap();
+
+    // for child in children {
+    //   if !page_ids.contains(&child.to_string()) { return Err(anyhow!("Error finding child.")) }
+    // }
 
     Ok(())
   }
