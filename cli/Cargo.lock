@@ -67,7 +67,7 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "async-trait",
- "colored 1.9.3",
+ "colored",
  "dirs",
  "git2",
  "reqwest",
@@ -183,7 +183,7 @@ dependencies = [
  "anyhow",
  "base",
  "clap",
- "colored 2.0.0",
+ "colored",
  "futures",
  "reqwest",
  "serde_json",
@@ -198,17 +198,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ddfc5b9aa5d4507acaf872de71051dfd0e309860e88966e1051e462a077aac4f"
 dependencies = [
  "bitflags",
-]
-
-[[package]]
-name = "colored"
-version = "1.9.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f4ffc801dacf156c5854b9df4f425a626539c3a6ef7893cc0c5084a23f0b6c59"
-dependencies = [
- "atty",
- "lazy_static",
- "winapi 0.3.8",
 ]
 
 [[package]]
@@ -1280,9 +1269,9 @@ dependencies = [
 
 [[package]]
 name = "reqwest"
-version = "0.10.7"
+version = "0.10.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "12427a5577082c24419c9c417db35cfeb65962efc7675bb6b0d5f1f9d315bfe6"
+checksum = "e9eaa17ac5d7b838b7503d118fa16ad88f440498bf9ffe5424e621f93190d61e"
 dependencies = [
  "base64 0.12.1",
  "bytes",
