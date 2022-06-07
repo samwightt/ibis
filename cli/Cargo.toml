@@ -13,6 +13,6 @@ colored = "2.0"
 valico = "2"
 reqwest = "0.10.7"
 futures = "0.3.5"
-tokio = { version = "0.2.22", features = ["macros"] }
+tokio = { version = "1.13.1", features = ["macros"] }
 anyhow = "1.0.32"
 base = { path = "../base" }
